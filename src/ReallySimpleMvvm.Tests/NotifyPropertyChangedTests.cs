@@ -31,15 +31,13 @@ namespace ReallySimpleMvvm.Tests
 		{
 
 			var test = new TestNotify();
-			bool equal = false;
+			var equal = false;
 			test.PropertyChanged += (sender, e) => { equal = (e.PropertyName == PropertyName); };
 
 			test.RaisesPropertyChanged();
 
 			Assert.IsTrue(equal);
 		}
-
-		
 
 		private class TestNotify : NotifyPropertyChanged
 		{
