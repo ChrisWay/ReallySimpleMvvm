@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Linq.Expressions;
 
-namespace ReallySimpleMvvm.Pcl
+namespace ReallySimpleMvvm
 {
 	public abstract class NotifyPropertyChanged : INotifyPropertyChanged
 	{
