@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ReallySimpleMvvm.Pcl
 {
-    public class Class1
-    {
-    }
+	class SimpleCommand
+	{
+	}
 }
