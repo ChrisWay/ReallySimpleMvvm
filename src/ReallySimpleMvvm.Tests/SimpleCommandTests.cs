@@ -10,13 +10,23 @@ namespace ReallySimpleMvvm.Tests
 	public class SimpleCommandTests
 	{
 		[Test]
-		public void WhenNoCanExecuteDelegateIsPassedCanExecute_ShouldReturnTrue()
+		public void WhenNoCanExecuteDelegateIsPassed_CanExecuteShouldReturnTrue()
 		{
 			var command = new SimpleCommand(() => { });
 
 			var result = command.CanExecute();
 
-			Assert.IsTrue(result,"Can Execute should always return true when no delgate is given.");
+			Assert.IsTrue(result,"CanExecute should always return true when no delgate is given.");
+		}
+
+		[Test]
+		public void WhenACanExecuteDelegateIsPassedThatEvaluatesToFalse_CanExecuteShouldReturnFalse()
+		{
+			var command = new SimpleCommand(() => { }, () => false);
+
+			var result = command.CanExecute();
+
+			Assert.IsFalse(result, "CanExecute should return false as there is a delegate and it returns false");
 		}
 	}
 }
