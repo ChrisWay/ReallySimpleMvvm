@@ -3,25 +3,30 @@ using System.Windows.Input;
 
 namespace ReallySimpleMvvm
 {
-	public abstract class SimpleCommandBase : ICommand
+	public class SimpleCommand<T> : ICommand
 	{
-		private readonly Action<object> _execute;
-		private readonly Func<object, bool> _canExecute;
+		private readonly Action<T> _execute;
+		private readonly Func<T, bool> _canExecute;
 
-		protected SimpleCommandBase(Action<object> execute, Func<object, bool> canExecute)
+		protected SimpleCommand(Action<T> execute, Func<T, bool> canExecute)
 		{
 			_execute = execute;
 			_canExecute = canExecute;
 		}
 
-		protected SimpleCommandBase(Action<object> execute)
+		protected SimpleCommand(Action<T> execute)
 			: this(execute, o => true)
 		{
 		}
 
-		public bool CanExecute(object parameter)
+		public virtual bool CanExecute(T parameter)
 		{
 			return _canExecute == null || _canExecute(parameter);
+		}
+
+		bool ICommand.CanExecute(object parameter)
+		{
+			return CanExecute((T)parameter);
 		}
 
 		public void RaiseCanExecuteChanged()
@@ -33,26 +38,18 @@ namespace ReallySimpleMvvm
 
 		public event EventHandler CanExecuteChanged;
 
-		public void Execute(object parameter)
+		void ICommand.Execute(object parameter)
+		{
+			_execute((T)parameter);
+		}
+
+		public void Execute(T parameter)
 		{
 			_execute(parameter);
 		}
 	}
 
-	public class SimpleCommand<T> : SimpleCommandBase
-	{
-		public SimpleCommand(Action<T> execute, Func<T, bool> canExecute)
-			: base(o => execute((T)o), o => canExecute((T)o))
-		{
-		}
-
-		public SimpleCommand(Action<T> execute)
-			: base(o => execute((T)o))
-		{
-		}
-	}
-
-	public class SimpleCommand : SimpleCommandBase
+	public class SimpleCommand : SimpleCommand<object>
 	{
 		public SimpleCommand(Action execute, Func<bool> canExecute)
 			: base(o => execute(), o => canExecute())
@@ -62,6 +59,16 @@ namespace ReallySimpleMvvm
 		public SimpleCommand(Action execute)
 			: base(o => execute())
 		{
+		}
+
+		public bool CanExecute()
+		{
+			return base.CanExecute(null);
+		}
+
+		public void Execute()
+		{
+			Execute(null);
 		}
 	}
 }

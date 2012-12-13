@@ -14,7 +14,7 @@ namespace ReallySimpleMvvm.Tests
 		{
 			var command = new SimpleCommand(() => { });
 
-			bool result = command.CanExecute(null);
+			var result = command.CanExecute();
 
 			Assert.IsTrue(result,"Can Execute should always return true when no delgate is given.");
 		}
