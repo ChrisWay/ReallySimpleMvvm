@@ -8,13 +8,13 @@ namespace ReallySimpleMvvm
 		private readonly Action<T> _execute;
 		private readonly Func<T, bool> _canExecute;
 
-		protected SimpleCommand(Action<T> execute, Func<T, bool> canExecute)
+		public SimpleCommand(Action<T> execute, Func<T, bool> canExecute)
 		{
 			_execute = execute;
 			_canExecute = canExecute;
 		}
 
-		protected SimpleCommand(Action<T> execute)
+		public SimpleCommand(Action<T> execute)
 			: this(execute, o => true)
 		{
 		}
