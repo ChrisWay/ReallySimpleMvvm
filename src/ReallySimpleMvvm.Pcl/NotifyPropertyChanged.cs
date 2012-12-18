@@ -39,18 +39,16 @@ namespace ReallySimpleMvvm
 		private static string GetPropertyNameFromLambda(LambdaExpression lambda)
 		{
 			MemberExpression memberExpression = null;
-			if (lambda.Body is UnaryExpression)
-			{
-				var unaryExpression = lambda.Body as UnaryExpression;
-				if (unaryExpression != null) 
-					memberExpression = unaryExpression.Operand as MemberExpression;
-			}
-			else
-				memberExpression = lambda.Body as MemberExpression;
+            		var unaryExpression = lambda.Body as UnaryExpression;
+            
+            		if (unaryExpression != null)
+                    		memberExpression = unaryExpression.Operand as MemberExpression;
+            		else
+                		memberExpression = lambda.Body as MemberExpression;
 
 			if (memberExpression == null)
-				throw new ArgumentException(String.Format("Property expression '{0}' did not provide a property name.", lambda));
-
+                		throw new ArgumentException(String.Format("Property expression '{0}' did not provide a property name.", lambda));
+			
 			return memberExpression.Member.Name;
 		}
 	}
