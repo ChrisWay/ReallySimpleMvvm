@@ -14,11 +14,11 @@ namespace ReallySimpleMvvm.Tests
 		private const string PropertyName = "Name";
 
 		[Test]
-		public void PropertyNameInPropertyChangedEventArgs_ShouldBeTheSameAsParameter()
+		public void RaisePropertyChangedEvent_PropertyNameInPropertyChangedEventArgs_ShouldBeTheSameAsParameter()
 		{
 			
 			var test = new TestNotify();
-			bool equal = false;
+			var equal = false;
 			test.PropertyChanged += (sender, e) => { equal = (e.PropertyName == PropertyName); };
 			
 			test.RaisesPropertyChanged(PropertyName);
@@ -27,7 +27,7 @@ namespace ReallySimpleMvvm.Tests
 		}
 
 		[Test]
-		public void PropertyNameInPropertyChangedEventArgs_ShouldBeTheSameAsProperty()
+		public void RaisePropertyChangedEvent_PropertyNameInPropertyChangedEventArgs_ShouldBeTheSameAsProperty()
 		{
 
 			var test = new TestNotify();
@@ -37,6 +37,19 @@ namespace ReallySimpleMvvm.Tests
 			test.RaisesPropertyChanged();
 
 			Assert.IsTrue(equal);
+		}
+
+		[Test]
+		public void RaisePropertyChangedEvent_RaiseEvent_ShouldRaiseEvent()
+		{
+
+			var test = new TestNotify();
+			var raised = false;
+			test.PropertyChanged += (sender, e) => { raised = true; };
+
+			test.RaisesPropertyChanged();
+
+			Assert.IsTrue(raised);
 		}
 
 		private class TestNotify : NotifyPropertyChanged
