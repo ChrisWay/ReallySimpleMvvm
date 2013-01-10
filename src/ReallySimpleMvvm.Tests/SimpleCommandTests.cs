@@ -1,8 +1,5 @@
-﻿using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Windows.Input;
+using NUnit.Framework;
 
 namespace ReallySimpleMvvm.Tests
 {
@@ -27,6 +24,28 @@ namespace ReallySimpleMvvm.Tests
 			var result = command.CanExecute();
 
 			Assert.IsFalse(result, "CanExecute should return false as there is a delegate and it returns false");
+		}
+
+		[Test]
+		public void Execute_CallsTheGivenDelegate_TheGivenDelegateIsCalled()
+		{
+			var called = false;
+			var command = new SimpleCommand(() => { called = true; });
+
+			command.Execute();
+
+			Assert.IsTrue(called);
+		}
+
+		[Test]
+		public void ICommandExecute_CallsTheGivenDelegate_TheGivenDelegateIsCalled()
+		{
+			var called = false;
+			var command = new SimpleCommand(() => { called = true; });
+
+			((ICommand)command).Execute(null);
+
+			Assert.IsTrue(called);
 		}
 	}
 }
