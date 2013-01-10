@@ -10,7 +10,7 @@ namespace ReallySimpleMvvm.Tests
 	public class SimpleCommandTests
 	{
 		[Test]
-		public void WhenNoCanExecuteDelegateIsPassed_CanExecuteShouldReturnTrue()
+		public void CanExecute_WhenNoCanExecuteDelegateIsPassed_CanExecuteShouldReturnTrue()
 		{
 			var command = new SimpleCommand(() => { });
 
@@ -20,7 +20,7 @@ namespace ReallySimpleMvvm.Tests
 		}
 
 		[Test]
-		public void WhenACanExecuteDelegateIsPassedThatEvaluatesToFalse_CanExecuteShouldReturnFalse()
+		public void CanExecute_WhenACanExecuteDelegateIsPassedThatEvaluatesToFalse_CanExecuteShouldReturnFalse()
 		{
 			var command = new SimpleCommand(() => { }, () => false);
 
