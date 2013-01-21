@@ -7,5 +7,16 @@ namespace ReallySimpleMvvm
 {
 	public class EventAggregator
 	{
+
+		public void Subscribe<T>(Action<T> sub)
+		{
+			
+		}
+
+		public void Publish<T>()
+		{
+			
+
+		}
 	}
 }
