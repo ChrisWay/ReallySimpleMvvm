@@ -11,6 +11,6 @@
         <description>Simple reusable classes for implementing basic MVVM features.</description>
     </metadata>
     <files>
-        <file src="ReallySimpleMvvm.Pcl\bin\Release\ReallySimpleMvvm.Pcl.dll" target="lib\portable-net45+sl4+wp7+win8\ReallySimpleMvvm.Pcl.dll" />
+        <file src="src\ReallySimpleMvvm.Pcl\bin\Release\ReallySimpleMvvm.Pcl.dll" target="lib\portable-net45+sl4+wp7+win8\ReallySimpleMvvm.Pcl.dll" />
     </files>
 </package>
