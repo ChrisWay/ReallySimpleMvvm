@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>ReallySimpleMvvm</id>
+        <version>0.1.0</version>
+        <title>Really Simple MVVM</title>
+        <authors>Chris Way</authors>
+        <owners>Chris Way</owners>
+        <projectUrl>https://github.com/ChrisWay/ReallySimpleMvvm</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Simple reusable classes for implementing basic MVVM features.</description>
+    </metadata>
+    <files>
+        <file src="ReallySimpleMvvm.Pcl\bin\Release\ReallySimpleMvvm.Pcl.dll" target="lib\portable-net45+sl4+wp7+win8\ReallySimpleMvvm.Pcl.dll" />
+    </files>
+</package>
